@@ -47,3 +47,15 @@ export const findPostById = async (req, res) => {
     res.status(500).json({ error: "Server Error" });
   }
 };
+
+export const deletePostById = async (req, res) => {
+  try {
+    const { postId } = req.params;
+
+    await Post.findByIdAndDelete({ _id: postId });
+    res.status(200).json({ message: "Post deleted successfully" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Failed to delete the post" });
+  }
+};

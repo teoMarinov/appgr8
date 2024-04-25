@@ -1,12 +1,14 @@
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { postType } from "../../common/types";
 import { CiEdit } from "react-icons/ci";
-import { FaCheck, FaHandLizard } from "react-icons/fa6";
+import { FaCheck } from "react-icons/fa6";
 import { MdOutlineCancel } from "react-icons/md";
 import { MdDeleteOutline } from "react-icons/md";
 const ViewImage = () => {
+  const nav = useNavigate();
+
   const { imageId } = useParams();
 
   const [title, setTitle] = useState("");
@@ -47,7 +49,7 @@ const ViewImage = () => {
         description: description,
       })
       .then(() => {
-        setEdit(false);
+        nav("/");
       })
       .catch((e) => console.log(e));
   };
@@ -55,7 +57,7 @@ const ViewImage = () => {
     axios
       .delete(`http://localhost:5000/post/${imageId}`)
       .then(() => {
-        setConfirmDelete(false);
+        nav("/");
       })
       .catch((e) => console.log(e));
   };
