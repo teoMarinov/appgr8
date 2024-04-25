@@ -28,8 +28,8 @@ const ImageContainer = ({
         <h1 className="absolute top-3 text-4xl">{title}</h1>
         <div className="absolute bottom-0 w-full text-xl">
           <p className="p-2">{formattedDate}</p>
-          <div className="h-36 p-2 border-t border-white w-full overflow-hidden text-wrap">
-            <p className="truncate">{description}</p>
+          <div className="h-36 p-2 border-t border-white w-full overflow-hidden text-wrap truncate">
+            <p>{description}</p>
           </div>
         </div>
       </div>

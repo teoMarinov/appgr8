@@ -43,10 +43,11 @@ const ViewImage = () => {
   };
 
   const handleAccept = () => {
+
     axios
       .put(`http://localhost:5000/post/${imageId}`, {
-        title: title,
-        description: description,
+        title,
+        description,
       })
       .then(() => {
         nav("/");

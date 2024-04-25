@@ -3,7 +3,8 @@ import {
   newPost,
   allPosts,
   findPostById,
-  deletePostById
+  deletePostById,
+  updatePostById,
 } from "../controllers/post.controller.js";
 
 const router = express.Router();
@@ -15,5 +16,7 @@ router.post("/upload", newPost);
 router.get("/:postId", findPostById);
 
 router.delete("/:postId", deletePostById);
+
+router.put("/:postId", updatePostById);
 
 export default router;
