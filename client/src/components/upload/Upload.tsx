@@ -8,6 +8,7 @@ const Upload = () => {
 
   const [image, setImage] = useState<string | null>();
   const [imageData, setImageData] = useState<any>(null);
+  const [loading, setLaoding] = useState(false);
 
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -21,6 +22,7 @@ const Upload = () => {
     formData.append("file", imageData);
     formData.append("upload_preset", "qm48of0h");
 
+    setLaoding(true);
     axios
       .post("https://api.cloudinary.com/v1_1/dbkmzgcap/image/upload", formData)
       .then(({ data }) => {
@@ -33,7 +35,10 @@ const Upload = () => {
             description: description,
             image: data,
           })
-          .catch((e) => console.log(e))
+          .catch((e) => {
+            setLaoding(false);
+            console.log(e);
+          })
           .then(() => nav("/"));
       })
       .catch((err) => console.log(err));
@@ -55,19 +60,24 @@ const Upload = () => {
   };
 
   return (
-    <div className="w-full h-[90vh] flex items-center justify-center">
-      <UploadForm
-        onSubmit={onSubmit}
-        changeTitle={setTitle}
-        changeDescription={setDescription}
-        uploadImage={handleImageChange}
-      />
-      <div className="w-[1300px] h-[700px] flex items-center justify-center mx-auto rounded-xl bg-gray-800/10 p-2">
-        {image && (
-          <img className="max-w-full max-h-full" src={image} alt="Uploaded" />
-        )}
+    <>
+      {loading && (
+        <div className="absolute w-screen h-screen opacity-50 bg-black" />
+      )}
+      <div className="w-full h-[90vh] flex items-center justify-center">
+        <UploadForm
+          onSubmit={onSubmit}
+          changeTitle={setTitle}
+          changeDescription={setDescription}
+          uploadImage={handleImageChange}
+        />
+        <div className="w-[1300px] h-[700px] flex items-center justify-center mx-auto rounded-xl bg-gray-800/10 p-2">
+          {image && (
+            <img className="max-w-full max-h-full" src={image} alt="Uploaded" />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
