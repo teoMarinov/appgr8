@@ -31,3 +31,19 @@ export const allPosts = async (req, res) => {
     res.status(500).json({ error: "Server Error" });
   }
 };
+
+export const findPostById = async (req, res) => {
+  try {
+    const { postId } = req.params;
+
+    const post = await Post.findById(postId);
+
+    if (!post) {
+      return res.status(404).json({ error: "Post not found" });
+    }
+    res.status(200).json(post);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Server Error" });
+  }
+};
