@@ -1,13 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/header/Header";
 import Upload from "./components/upload/Upload";
+import Home from "./components/home/Home";
 
 export default function App() {
   return (
     <div className="h-full w-full overflow-auto">
-    <Header />
+      <Header />
       <Routes>
-        <Route path="/" element={"Jome"} />
+        <Route path="/" element={<Home />} />
         <Route path="/upload" element={<Upload />} />
       </Routes>
     </div>
