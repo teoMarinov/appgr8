@@ -16,7 +16,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center mt-20">
+    <div className="flex items-center justify-center mt-20 pb-24">
       <div className="w-fit grid grid-cols-3 gap-16">
         {posts.map((post) => (
           <div key={post._id}>

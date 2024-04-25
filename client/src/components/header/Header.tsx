@@ -17,7 +17,7 @@ const Header = () => {
         onClick={() => nav("/")}
         className="transition hover:scale-105 w-36 text-center p-2 rounded-xl border-2 border-gray-400"
       >
-        <p>Home</p>
+        <p>View All</p>
       </button>
       <div className="relative">
         <input
