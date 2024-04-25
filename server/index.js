@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/a", test)
+app.use("/post", test)
 
 const PORT = 5000;
 app.listen(PORT, () => console.log(`Server is running...\nPort: ${PORT}`));

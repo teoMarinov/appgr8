@@ -2,7 +2,10 @@
 import axios from "axios";
 import { useState } from "react";
 import UploadForm from "./UploadForm";
+import { useNavigate } from "react-router-dom";
 const Upload = () => {
+  const nav = useNavigate();
+
   const [image, setImage] = useState<string | null>();
   const [imageData, setImageData] = useState<any>(null);
 
@@ -25,12 +28,13 @@ const Upload = () => {
       })
       .then((data) => {
         axios
-          .post("http://localhost:5000/a/test", {
+          .post("http://localhost:5000/post/upload", {
             title: title,
             description: description,
             image: data,
           })
-          .then(({ data }) => console.log(data));
+          .catch((e) => console.log(e))
+          .then(() => nav("/"));
       })
       .catch((err) => console.log(err));
   };
