@@ -1,14 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import ImageContainer from "./ImageContainer";
+import { postType } from "../../common/types";
 
-interface postType {
-  title: string;
-  description: string;
-  image: string;
-  _id: string;
-  date: string;
-}
 
 const Home = () => {
   const [posts, setPosts] = useState<postType[]>([]);
